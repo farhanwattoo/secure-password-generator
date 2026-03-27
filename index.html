@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>パスワードジェネレーター – 安全なオンラインツールハブ</title>
+    <meta name="description" content="ブラウザで即座に強力で安全なパスワードを生成します。データは保存も送信もされません。強度メーター、エントロピー計算、詳細オプションを含みます。" />
+    <meta name="keywords"
+        content="パスワードジェネレーター,安全なパスワードジェネレーター,ランダムパスワードジェネレーター,強力なパスワードジェネレーター,WiFiパスワードジェネレーター,パスワードメーカー,オンラインパスワードジェネレーター" />
+    <!-- Open Graph -->
+    <meta property="og:title" content="パスワードジェネレーター – 安全なオンラインツールハブ" />
+    <meta property="og:description" content="ブラウザで即座に強力で安全なパスワードを生成します。データは保存も送信もされません。" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://example.com/" />
+    <meta property="og:image" content="https://example.com/assets/og-image.png" />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="パスワードジェネレーター – 安全なオンラインツールハブ" />
+    <meta name="twitter:description" content="ブラウザで即座に強力で安全なパスワードを生成します。データは保存も送信もされません。" />
+    <meta name="twitter:image" content="https://example.com/assets/twitter-image.png" />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+    <!-- ダーク/ライトモード切替 -->
+    <button id="theme-toggle" aria-label="ダーク/ライトモード切替" class="theme-toggle">🌙</button>
+
+    <!-- 上部ナビゲーション -->
+    <nav class="top-nav" aria-label="メインナビゲーション">
+        <ul>
+            <li><a href="#password-generator" class="nav-link active">パスワードジェネレーター</a></li>
+            <li><a href="tools/password-strength-checker.html" class="nav-link">パスワード強度チェッカー</a></li>
+            <li><a href="tools/random-username-generator.html" class="nav-link">ランダムユーザー名ジェネレーター</a></li>
+            <li><a href="tools/random-name-generator.html" class="nav-link">ランダム名前ジェネレーター</a></li>
+            <li><a href="tools/secure-pin-generator.html" class="nav-link">安全なPINジェネレーター</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <!-- パスワードジェネレーターセクション -->
+        <section id="password-generator" class="section">
+            <h1>パスワードジェネレーター</h1>
+            <p class="notice">すべてのパスワードはブラウザ内でローカルに生成されます。データは保存も送信もされません。</p>
+            <div class="generator-container">
+                <div class="output-box" aria-live="polite" id="password-output" tabindex="0"></div>
+                <div class="controls">
+                    <label for="length">長さ: <span id="length-value">12</span></label>
+                    <input type="range" id="length" min="4" max="128" value="12" />
+                    <div class="checkboxes">
+                        <label><input type="checkbox" id="uppercase" checked /> 大文字 (A‑Z)</label>
+                        <label><input type="checkbox" id="lowercase" checked /> 小文字 (a‑z)</label>
+                        <label><input type="checkbox" id="numbers" checked /> 数字 (0‑9)</label>
+                        <label><input type="checkbox" id="symbols" /> 記号 (!@#…)</label>
+                    </div>
+                    <details class="advanced-options">
+                        <summary>詳細オプション</summary>
+                        <label><input type="checkbox" id="exclude-similar" /> 類似文字を除外 (O,0,l,I)</label>
+                        <label><input type="checkbox" id="exclude-ambiguous" /> 曖昧な記号を除外</label>
+                        <label><input type="checkbox" id="no-repeats" /> 文字の繰り返しを避ける</label>
+                        <label><input type="checkbox" id="no-sequences" /> 連続文字を避ける</label>
+                        <label>プレフィックス: <input type="text" id="prefix" placeholder="例: MyApp-" /></label>
+                        <label>サフィックス: <input type="text" id="suffix" placeholder="例: -2026" /></label>
+                    </details>
+                    <div class="action-buttons">
+                        <button id="generate-btn" class="primary">パスワード生成</button>
+                        <button id="regenerate-btn" class="secondary" disabled>再生成</button>
+                        <button id="copy-btn" class="secondary" disabled>コピー</button>
+                        <button id="multiple-btn" class="secondary">複数生成</button>
+                    </div>
+                    <div class="strength-meter">
+                        <meter id="strength-meter" min="0" max="100" value="0"></meter>
+                        <span id="strength-label">強度: N/A</span>
+                        <span id="entropy-value"></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 追加ジェネレータータブ -->
+        <section class="section" id="additional-generators">
+            <h2>その他のジェネレーター</h2>
+            <div class="tabs">
+                <button class="tab-link active" data-tab="passphrase">パスフレーズジェネレーター</button>
+                <button class="tab-link" data-tab="memorable">覚えやすいパスワード</button>
+                <button class="tab-link" data-tab="random-string">ランダム文字列</button>
+                <button class="tab-link" data-tab="pin">ランダムPIN</button>
+            </div>
+            <div class="tab-content" id="passphrase" style="display:block;">
+                <p>近日公開 – 4〜10語のランダムな単語でパスフレーズを生成します。</p>
+            </div>
+            <div class="tab-content" id="memorable" style="display:none;">
+                <p>近日公開 – 発音しやすく覚えやすいパスワードを生成します。</p>
+            </div>
+            <div class="tab-content" id="random-string" style="display:none;">
+                <p>近日公開 – ランダムな英数字文字列を生成します。</p>
+            </div>
+            <div class="tab-content" id="pin" style="display:none;">
+                <p>近日公開 – 高エントロピーな数値PINを生成します。</p>
+            </div>
+        </section>
+
+        <!-- ツールハブグリッド -->
+        <section class="section" id="tools-hub">
+            <h2>ツールハブ</h2>
+            <div class="grid">
+                <a href="#password-generator" class="card">
+                    <div class="icon">🔐</div>
+                    <h3>パスワードジェネレーター</h3>
+                    <p>強力でランダムなパスワードを即座に生成。</p>
+                </a>
+                <a href="tools/password-strength-checker.html" class="card">
+                    <div class="icon">💪</div>
+                    <h3>パスワード強度チェッカー</h3>
+                    <p>パスワードの強度とエントロピーを分析。</p>
+                </a>
+                <a href="tools/random-username-generator.html" class="card">
+                    <div class="icon">👤</div>
+                    <h3>ランダムユーザー名ジェネレーター</h3>
+                    <p>任意のプラットフォーム向けにユニークなユーザー名を作成。</p>
+                </a>
+                <a href="tools/random-name-generator.html" class="card">
+                    <div class="icon">🧑‍🤝‍🧑</div>
+                    <h3>ランダム名前ジェネレーター</h3>
+                    <p>リアルな姓と名を生成。</p>
+                </a>
+                <a href="tools/secure-pin-generator.html" class="card">
+                    <div class="icon">🔢</div>
+                    <h3>安全なPINジェネレーター</h3>
+                    <p>高エントロピーな数値PINを生成。</p>
+                </a>
+            </div>
+        </section>
+
+        <!-- 教育コンテンツ -->
+        <section class="section" id="education">
+            <h2>強力なパスワードの作り方</h2>
+            <ul>
+                <li>12文字以上を使用し、長くするほど安全です。</li>
+                <li>大文字・小文字・数字・記号を組み合わせます。</li>
+                <li>名前や誕生日などの個人情報は避けましょう。</li>
+                <li>サイトごとにユニークなパスワードを使用します。</li>
+                <li>信頼できるパスワードマネージャーの利用を検討してください。</li>
+            </ul>
+        </section>
+
+        <!-- FAQ セクション -->
+        <section class="section" id="faq">
+            <h2>よくある質問</h2>
+            <dl>
+                <dt>パスワードジェネレーターとは何ですか？</dt>
+                <dd>パスワードジェネレーターは、攻撃者が推測しにくいランダムで予測不可能なパスワードを生成します。</dd>
+                <dt>生成されたパスワードは安全ですか？</dt>
+                <dd>はい。当ツールはブラウザの暗号学的に安全な乱数生成器 (window.crypto) を使用し、高エントロピーを確保しています。</dd>
+                <dt>パスワードはどのくらいの長さが推奨されますか？</dt>
+                <dd>最低でも12文字を推奨します。長くなるほどセキュリティは指数的に向上します。</dd>
+                <dt>パスワードが強いとみなされる条件は？</dt>
+                <dd>長さ、文字種の組み合わせ、ランダム性です。一般的な単語やパターン、繰り返し文字は避けましょう。</dd>
+                <dt>ハッカーはランダムパスワードを推測できるでしょうか？</dt>
+                <dd>正確なパスワードが分からない限り、高エントロピーなランダムパスワードを推測することは計算上不可能です。</dd>
+                <dt>パスワードマネージャーは使用すべきですか？</dt>
+                <dd>ぜひご利用ください。パスワードマネージャーは強力でユニークなパスワードを安全に保存し、ログインを簡素化します。</dd>
+            </dl>
+        </section>
+    </main>
+
+    <!-- フッターナビゲーション -->
+    <footer class="bottom-nav" aria-label="フッターナビゲーション">
+        <ul>
+            <li><a href="#password-generator" class="nav-link">パスワードジェネレーター</a></li>
+            <li><a href="tools/password-strength-checker.html" class="nav-link">パスワード強度チェッカー</a></li>
+            <li><a href="tools/random-username-generator.html" class="nav-link">ランダムユーザー名ジェネレーター</a></li>
+            <li><a href="tools/random-name-generator.html" class="nav-link">ランダム名前ジェネレーター</a></li>
+            <li><a href="tools/secure-pin-generator.html" class="nav-link">安全なPINジェネレーター</a></li>
+        </ul>
+        <p>&copy; 2026 ツールハブ. All rights reserved.</p>
+    </footer>
+
+    <!-- JSON‑LD 構造化データ -->
+    <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "パスワードジェネレーター",
+    "description": "ブラウザで即座に強力で安全なパスワードを生成します。データは保存も送信もされません。",
+    "applicationCategory": "SecurityApplication",
+    "operatingSystem": "All",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+    <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "パスワードジェネレーターとは何ですか？", "acceptedAnswer": { "@type": "Answer", "text": "パスワードジェネレーターは、攻撃者が推測しにくいランダムで予測不可能なパスワードを生成します。" } },
+      { "@type": "Question", "name": "生成されたパスワードは安全ですか？", "acceptedAnswer": { "@type": "Answer", "text": "はい。当ツールはブラウザの暗号学的に安全な乱数生成器 (window.crypto) を使用し、高エントロピーを確保しています。" } },
+      { "@type": "Question", "name": "パスワードはどのくらいの長さが推奨されますか？", "acceptedAnswer": { "@type": "Answer", "text": "最低でも12文字を推奨します。長くなるほどセキュリティは指数的に向上します。" } },
+      { "@type": "Question", "name": "パスワードが強いとみなされる条件は？", "acceptedAnswer": { "@type": "Answer", "text": "長さ、文字種の組み合わせ、ランダム性です。一般的な単語やパターン、繰り返し文字は避けましょう。" } },
+      { "@type": "Question", "name": "ハッカーはランダムパスワードを推測できるでしょうか？", "acceptedAnswer": { "@type": "Answer", "text": "正確なパスワードが分からない限り、高エントロピーなランダムパスワードを推測することは計算上不可能です。" } },
+      { "@type": "Question", "name": "パスワードマネージャーは使用すべきですか？", "acceptedAnswer": { "@type": "Answer", "text": "ぜひご利用ください。パスワードマネージャーは強力でユニークなパスワードを安全に保存し、ログインを簡素化します。" } }
+    ]
+  }
+  </script>
+
+    <script src="js/password-generator.js"></script>
+    <script src="js/password-strength.js"></script>
+</body>
+
+</html>
