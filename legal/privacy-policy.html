@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>プライバシーポリシー – パスワード生成.com</title>
+    <meta name="description" content="パスワード生成.comのプライバシーポリシー。ユーザーのデータ保護とプライバシーに関する情報を掲載しています。" />
+    <link rel="stylesheet" href="../css/style.css" />
+</head>
+
+<body>
+    <!-- ダーク/ライトモード切替 -->
+    <button id="theme-toggle" aria-label="ダーク/ライトモード切替" class="theme-toggle">🌙</button>
+
+    <nav class="top-nav" aria-label="メインナビゲーション">
+        <a href="../index.html" class="site-brand">
+            <span>🔐</span> パスワード生成.com
+        </a>
+        <div class="nav-container">
+            <ul>
+                <li><a href="../index.html" class="nav-link">ホーム</a></li>
+                <li><a href="../tools/password-strength-checker.html" class="nav-link">強度チェッカー</a></li>
+                <li><a href="../tools/random-username-generator.html" class="nav-link">ユーザー名生成</a></li>
+                <li><a href="../tools/random-name-generator.html" class="nav-link">名前生成</a></li>
+                <li><a href="../tools/secure-pin-generator.html" class="nav-link">PIN生成</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section class="section content-detail">
+            <h1>プライバシーポリシー</h1>
+            <p>最終更新日：2026年3月28日</p>
+            
+            <div class="detail-text">
+                <h2>1. 基本方針</h2>
+                <p>「パスワード生成.com」（以下「当サイト」といいます）は、ユーザーのプライバシーを最優先に考えます。当サイトが提供するすべてのツールは、ユーザーのデバイス上でローカルに動作するように設計されています。</p>
+
+                <h2>2. データの収集と送信について</h2>
+                <p>当サイトが提供する「パスワードジェネレーター」「ユーザー名生成」「PIN生成」などの各種ツールにおいて、ユーザーが入力した情報や、生成された結果（パスワード、ユーザー名等）が当サイトのサーバーに送信、収集、保存されることは一切ありません。すべての処理はユーザーのブラウザ内（クライアントサイド）で行われます。</p>
+
+                <h2>3. アクセス解析ツールについて</h2>
+                <p>当サイトでは、サービスの向上を目的として、Googleによるアクセス解析ツール「Googleアナリティクス」を利用する場合があります。このGoogleアナリティクスは、データの収集のためにCookie（クッキー）を使用しています。このデータは匿名で収集されており、個人を特定するものではありません。この機能はCookieを無効にすることで収集を拒否することが可能ですので、お使いのブラウザの設定をご確認ください。</p>
+
+                <h2>4. プライバシーポリシーの変更</h2>
+                <p>当サイトは、法令の変更等に伴い、本プライバシーポリシーを随時更新することがあります。最新の情報については、当ページにてご確認ください。</p>
+
+                <h2>5. お問い合わせ</h2>
+                <p>プライバシーに関するご質問やお問い合わせは、当サイトの運営者までご連絡ください（※必要に応じて連絡先URL/フォーム等を追記してください）。</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bottom-nav" aria-label="フッターナビゲーション">
+        <div class="footer-brand">
+            <a href="../index.html" class="site-brand">🔐 パスワード生成.com</a>
+            <p>プライバシー重視の安全なツールコレクション</p>
+        </div>
+        <ul>
+            <li><a href="../index.html" class="nav-link">ホーム (Default Page)</a></li>
+            <li><a href="privacy-policy.html" class="nav-link active">プライバシーポリシー</a></li>
+            <li><a href="terms-of-service.html" class="nav-link">利用規約</a></li>
+            <li><a href="disclaimer.html" class="nav-link">免責事項</a></li>
+        </ul>
+        <p class="copyright">&copy; 2026 パスワード生成.com. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const theme = localStorage.getItem('theme');
+        if (theme) {
+            document.body.classList.add(theme);
+            themeToggle.textContent = theme === 'dark-mode' ? '☀️' : '🌙';
+        }
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const currentTheme = document.body.classList.contains('dark-mode') ? 'dark-mode' : '';
+            localStorage.setItem('theme', currentTheme);
+            themeToggle.textContent = currentTheme === 'dark-mode' ? '☀️' : '🌙';
+        });
+    </script>
+</body>
+
+</html>

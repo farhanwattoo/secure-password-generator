@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>利用規約 – パスワード生成.com</title>
+    <meta name="description" content="パスワード生成.comの利用規約です。当サイトのご利用にあたって必要な条件を記載しています。" />
+    <link rel="stylesheet" href="../css/style.css" />
+</head>
+
+<body>
+    <!-- ダーク/ライトモード切替 -->
+    <button id="theme-toggle" aria-label="ダーク/ライトモード切替" class="theme-toggle">🌙</button>
+
+    <nav class="top-nav" aria-label="メインナビゲーション">
+        <a href="../index.html" class="site-brand">
+            <span>🔐</span> パスワード生成.com
+        </a>
+        <div class="nav-container">
+            <ul>
+                <li><a href="../index.html" class="nav-link">ホーム</a></li>
+                <li><a href="../tools/password-strength-checker.html" class="nav-link">強度チェッカー</a></li>
+                <li><a href="../tools/random-username-generator.html" class="nav-link">ユーザー名生成</a></li>
+                <li><a href="../tools/random-name-generator.html" class="nav-link">名前生成</a></li>
+                <li><a href="../tools/secure-pin-generator.html" class="nav-link">PIN生成</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section class="section content-detail">
+            <h1>利用規約</h1>
+            <p>最終更新日：2026年3月28日</p>
+            
+            <div class="detail-text">
+                <h2>1. 本サービスのご利用について</h2>
+                <p>当ウェブサイト「パスワード生成.com」（以下「当サイト」といいます）へのアクセスおよびそのサービスのご利用に際しては、以下の利用規約にご同意いただいたものと見なします。同意いただけない場合は、当サイトのご利用をお控えください。</p>
+
+                <h2>2. サービスの提供と利用目的</h2>
+                <p>当サイトは、ユーザーに対し、強力で安全なパスワードを生成し、セキュリティ意識を向上させるための各種ツールを提供します。本サービスはすべて無料でご利用いただけます。</p>
+
+                <h2>3. 知的財産権について</h2>
+                <p>当サイト上のコンテンツ、テキスト、デザインおよびプログラムに関する知的財産権（著作権を含む）は、すべて当サイト運営者に帰属します。無断での無断模倣、転載、商用利用はお断りいたします。</p>
+
+                <h2>4. セキュリティに関する前提</h2>
+                <p>当サイトで生成されるパスワードはランダムな文字列に基づいています。ただし、パスワードの管理責任はすべてユーザーにあります。生成されたパスワードにより発生したいかなるトラブルや損失に対しても、当サイトを免責とすることに同意したものと見なされます。</p>
+
+                <h2>5. 利用制限</h2>
+                <p>当サイトの正常な運営を妨げるような不正アクセス行為、自動化されたスクリプトによる過度な負荷送信等の行為を禁止します。</p>
+
+                <h2>6. 利用規約の変更</h2>
+                <p>当サイトは、本規約を事前の告知なく変更できるものとします。本規約が変更された後、ユーザーが当サイトを利用した場合は、最新の規約に同意したものと見なされます。</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bottom-nav" aria-label="フッターナビゲーション">
+        <div class="footer-brand">
+            <a href="../index.html" class="site-brand">🔐 パスワード生成.com</a>
+            <p>プライバシー重視の安全なツールコレクション</p>
+        </div>
+        <ul>
+            <li><a href="../index.html" class="nav-link">ホーム (Default Page)</a></li>
+            <li><a href="privacy-policy.html" class="nav-link">プライバシーポリシー</a></li>
+            <li><a href="terms-of-service.html" class="nav-link active">利用規約</a></li>
+            <li><a href="disclaimer.html" class="nav-link">免責事項</a></li>
+        </ul>
+        <p class="copyright">&copy; 2026 パスワード生成.com. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const theme = localStorage.getItem('theme');
+        if (theme) {
+            document.body.classList.add(theme);
+            themeToggle.textContent = theme === 'dark-mode' ? '☀️' : '🌙';
+        }
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const currentTheme = document.body.classList.contains('dark-mode') ? 'dark-mode' : '';
+            localStorage.setItem('theme', currentTheme);
+            themeToggle.textContent = currentTheme === 'dark-mode' ? '☀️' : '🌙';
+        });
+    </script>
+</body>
+
+</html>

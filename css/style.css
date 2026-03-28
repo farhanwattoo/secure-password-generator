@@ -130,11 +130,22 @@ a:hover {
 
 .bottom-nav ul {
   display: flex;
-  gap: 2rem;
+  gap: 1.5rem;
   list-style: none;
   justify-content: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   flex-wrap: wrap;
+}
+
+.legal-nav {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+  opacity: 0.8;
+}
+
+.legal-nav ul {
+  font-size: 0.8rem;
 }
 
 .copyright {
