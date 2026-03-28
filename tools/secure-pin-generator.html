@@ -12,28 +12,51 @@
 </head>
 
 <body>
+    <!-- ダーク/ライトモード切替 -->
+    <button id="theme-toggle" aria-label="ダーク/ライトモード切替" class="theme-toggle">🌙</button>
+
     <nav class="top-nav" aria-label="Main navigation">
         <ul>
             <li><a href="../index.html" class="nav-link">Home</a></li>
-            <li><a href="secure-pin-generator.html" class="nav-link active">Secure PIN Generator</a></li>
-            <li><a href="password-strength-checker.html" class="nav-link">Password Strength Checker</a></li>
-            <li><a href="random-username-generator.html" class="nav-link">Random Username Generator</a></li>
-            <li><a href="random-name-generator.html" class="nav-link">Random Name Generator</a></li>
+            <li><a href="password-strength-checker.html" class="nav-link">Strength Checker</a></li>
+            <li><a href="random-username-generator.html" class="nav-link">Username Generator</a></li>
+            <li><a href="random-name-generator.html" class="nav-link">Name Generator</a></li>
+            <li><a href="secure-pin-generator.html" class="nav-link active">PIN Generator</a></li>
         </ul>
     </nav>
 
     <main>
-        <h1>Secure PIN Generator</h1>
-        <p class="notice">Tool coming soon. Stay tuned for a fast, secure PIN generator.</p>
-        <p><a href="../index.html">← Back to Tools Hub</a></p>
+        <section class="section">
+            <h1>Secure PIN Generator</h1>
+            <p class="notice">Generate numeric PINs of any length. All generation is done using cryptographically secure random numbers.</p>
+            <div class="generator-container">
+                <div class="output-box" id="pin-output" aria-live="polite">Generate a PIN...</div>
+                <div class="controls">
+                    <label for="pin-length">PIN Length: <span id="pin-length-val">4</span></label>
+                    <input type="range" id="pin-length" min="3" max="12" value="4" />
+                    
+                    <div class="action-buttons">
+                        <button id="generate-pin-btn" class="primary">Generate PIN</button>
+                        <button id="copy-pin-btn" class="secondary" disabled>Copy</button>
+                    </div>
+                </div>
+            </div>
+            <p style="margin-top: 1rem;"><a href="../index.html">← Back to Password Generator</a></p>
+        </section>
     </main>
 
     <footer class="bottom-nav" aria-label="Footer navigation">
         <ul>
             <li><a href="../index.html" class="nav-link">Home</a></li>
+            <li><a href="password-strength-checker.html" class="nav-link">Strength Checker</a></li>
+            <li><a href="random-username-generator.html" class="nav-link">Username Generator</a></li>
+            <li><a href="random-name-generator.html" class="nav-link">Name Generator</a></li>
+            <li><a href="secure-pin-generator.html" class="nav-link active">PIN Generator</a></li>
         </ul>
         <p>&copy; 2026 Tools Hub. All rights reserved.</p>
     </footer>
+
+    <script src="../js/secure-pin-generator.js"></script>
 
     <script type="application/ld+json">
   {

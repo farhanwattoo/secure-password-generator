@@ -12,27 +12,56 @@
 </head>
 
 <body>
+    <!-- ダーク/ライトモード切替 -->
+    <button id="theme-toggle" aria-label="ダーク/ライトモード切替" class="theme-toggle">🌙</button>
+
     <nav class="top-nav" aria-label="Main navigation">
         <ul>
             <li><a href="../index.html" class="nav-link">Home</a></li>
-            <li><a href="random-username-generator.html" class="nav-link active">Random Username Generator</a></li>
-            <li><a href="random-name-generator.html" class="nav-link">Random Name Generator</a></li>
-            <li><a href="secure-pin-generator.html" class="nav-link">Secure PIN Generator</a></li>
+            <li><a href="password-strength-checker.html" class="nav-link">Strength Checker</a></li>
+            <li><a href="random-username-generator.html" class="nav-link active">Username Generator</a></li>
+            <li><a href="random-name-generator.html" class="nav-link">Name Generator</a></li>
+            <li><a href="secure-pin-generator.html" class="nav-link">PIN Generator</a></li>
         </ul>
     </nav>
 
     <main>
-        <h1>Random Username Generator</h1>
-        <p class="notice">Tool coming soon. Stay tuned for a fast, secure username generator.</p>
-        <p><a href="../index.html">← Back to Tools Hub</a></p>
+        <section class="section">
+            <h1>Random Username Generator</h1>
+            <p class="notice">Generate unique usernames for any platform. All generation is done locally.</p>
+            <div class="generator-container">
+                <div class="output-box" id="username-output" aria-live="polite">Generate a username...</div>
+                <div class="controls">
+                    <label for="username-length">Select Length: <span id="username-length-val">10</span></label>
+                    <input type="range" id="username-length" min="4" max="24" value="10" />
+                    
+                    <div class="checkboxes">
+                        <label><input type="checkbox" id="include-numbers" checked /> Include Numbers</label>
+                        <label><input type="checkbox" id="include-symbols" /> Include Underscore / Dash</label>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button id="generate-username-btn" class="primary">Generate Username</button>
+                        <button id="copy-username-btn" class="secondary" disabled>Copy</button>
+                    </div>
+                </div>
+            </div>
+            <p style="margin-top: 1rem;"><a href="../index.html">← Back to Password Generator</a></p>
+        </section>
     </main>
 
     <footer class="bottom-nav" aria-label="Footer navigation">
         <ul>
             <li><a href="../index.html" class="nav-link">Home</a></li>
+            <li><a href="password-strength-checker.html" class="nav-link">Strength Checker</a></li>
+            <li><a href="random-username-generator.html" class="nav-link active">Username Generator</a></li>
+            <li><a href="random-name-generator.html" class="nav-link">Name Generator</a></li>
+            <li><a href="secure-pin-generator.html" class="nav-link">PIN Generator</a></li>
         </ul>
         <p>&copy; 2026 Tools Hub. All rights reserved.</p>
     </footer>
+
+    <script src="../js/random-username-generator.js"></script>
 
     <script type="application/ld+json">
   {
