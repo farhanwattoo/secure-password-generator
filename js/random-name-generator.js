@@ -45,13 +45,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const last = lastNames[Math.floor(Math.random() * lastNames.length)];
         outputBox.textContent = `${first} ${last}`;
         copyBtn.disabled = false;
+        copyBtn.textContent = 'コピー';
     });
 
     copyBtn.addEventListener('click', async () => {
         try {
             await navigator.clipboard.writeText(outputBox.textContent);
             const originalText = copyBtn.textContent;
-            copyBtn.textContent = 'Copied!';
+            copyBtn.textContent = 'コピーしました！';
             setTimeout(() => copyBtn.textContent = originalText, 1500);
         } catch (err) {
             console.error('Failed to copy!', err);

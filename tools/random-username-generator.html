@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Random Username Generator – Tools Hub</title>
+    <title>ランダムユーザー名ジェネレーター – 安全なオンラインツールハブ</title>
     <meta name="description"
-        content="Generate unique, random usernames instantly in your browser. No data is stored or transmitted." />
-    <meta name="keywords" content="random username generator, unique username, online username generator" />
+        content="即座にユニークでランダムなユーザー名を生成します。データは保存も送信もされません。" />
+    <meta name="keywords" content="ユーザー名生成,ランダムユーザー名,オンラインツール,安全" />
     <link rel="stylesheet" href="../css/style.css" />
 </head>
 
@@ -15,65 +15,103 @@
     <!-- ダーク/ライトモード切替 -->
     <button id="theme-toggle" aria-label="ダーク/ライトモード切替" class="theme-toggle">🌙</button>
 
-    <nav class="top-nav" aria-label="Main navigation">
+    <nav class="top-nav" aria-label="メインナビゲーション">
         <ul>
-            <li><a href="../index.html" class="nav-link">Home</a></li>
-            <li><a href="password-strength-checker.html" class="nav-link">Strength Checker</a></li>
-            <li><a href="random-username-generator.html" class="nav-link active">Username Generator</a></li>
-            <li><a href="random-name-generator.html" class="nav-link">Name Generator</a></li>
-            <li><a href="secure-pin-generator.html" class="nav-link">PIN Generator</a></li>
+            <li><a href="../index.html" class="nav-link">ホーム</a></li>
+            <li><a href="password-strength-checker.html" class="nav-link">強度チェッカー</a></li>
+            <li><a href="random-username-generator.html" class="nav-link active">ユーザー名生成</a></li>
+            <li><a href="random-name-generator.html" class="nav-link">名前生成</a></li>
+            <li><a href="secure-pin-generator.html" class="nav-link">PIN生成</a></li>
         </ul>
     </nav>
 
     <main>
         <section class="section">
-            <h1>Random Username Generator</h1>
-            <p class="notice">Generate unique usernames for any platform. All generation is done locally.</p>
+            <h1>ランダムユーザー名ジェネレーター</h1>
+            <p class="notice">SNSやゲーム用のユニークなユーザー名を生成します。すべての処理はローカルで行われます。</p>
             <div class="generator-container">
-                <div class="output-box" id="username-output" aria-live="polite">Generate a username...</div>
+                <div class="output-box" id="username-output" aria-live="polite">ユーザー名を生成してください...</div>
                 <div class="controls">
-                    <label for="username-length">Select Length: <span id="username-length-val">10</span></label>
+                    <label for="username-length">長さを選択: <span id="username-length-val">10</span></label>
                     <input type="range" id="username-length" min="4" max="24" value="10" />
                     
                     <div class="checkboxes">
-                        <label><input type="checkbox" id="include-numbers" checked /> Include Numbers</label>
-                        <label><input type="checkbox" id="include-symbols" /> Include Underscore / Dash</label>
+                        <label><input type="checkbox" id="include-numbers" checked /> 数字を含める</label>
+                        <label><input type="checkbox" id="include-symbols" /> 記号（_ / -）を含める</label>
                     </div>
 
                     <div class="action-buttons">
-                        <button id="generate-username-btn" class="primary">Generate Username</button>
-                        <button id="copy-username-btn" class="secondary" disabled>Copy</button>
+                        <button id="generate-username-btn" class="primary">ユーザー名を生成</button>
+                        <button id="copy-username-btn" class="secondary" disabled>コピー</button>
                     </div>
                 </div>
             </div>
-            <p style="margin-top: 1rem;"><a href="../index.html">← Back to Password Generator</a></p>
+            <p style="margin-top: 1rem;"><a href="../index.html">← パスワードジェネレーターに戻る</a></p>
+        </section>
+
+        <!-- 教育コンテンツ -->
+        <section class="section">
+            <h2>良いユーザー名の選び方</h2>
+            <p>オンラインでの匿名性を守りつつ、覚えやすいユーザー名を作るためのヒント：</p>
+            <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+                <li><strong>個人情報を避ける:</strong> 本名、誕生日、居住地などは含めないようにしましょう。</li>
+                <li><strong>読みやすさ:</strong> 「SwiftLion」のように、単語を組み合わせると覚えやすくなります。</li>
+                <li><strong>独自性:</strong> 数字や記号を適宜混ぜることで、他のユーザーとの重複を避けられます。</li>
+            </ul>
+        </section>
+
+        <!-- FAQ セクション -->
+        <section class="section" id="faq">
+            <h2>よくある質問 (FAQ)</h2>
+            <dl>
+                <dt>生成されたユーザー名は他で使われていますか？</dt>
+                <dd>このツールはランダムに生成するため、実際に使用可能かどうかは各サービスで確認する必要があります。</dd>
+                <dt>匿名性は保たれますか？</dt>
+                <dd>はい。このツールは完全にランダムな単語の組み合わせを使用するため、あなた自身の情報とは無関係な名前を作れます。</dd>
+            </dl>
         </section>
     </main>
 
-    <footer class="bottom-nav" aria-label="Footer navigation">
+    <footer class="bottom-nav" aria-label="フッターナビゲーション">
         <ul>
-            <li><a href="../index.html" class="nav-link">Home</a></li>
-            <li><a href="password-strength-checker.html" class="nav-link">Strength Checker</a></li>
-            <li><a href="random-username-generator.html" class="nav-link active">Username Generator</a></li>
-            <li><a href="random-name-generator.html" class="nav-link">Name Generator</a></li>
-            <li><a href="secure-pin-generator.html" class="nav-link">PIN Generator</a></li>
+            <li><a href="../index.html" class="nav-link">ホーム</a></li>
+            <li><a href="password-strength-checker.html" class="nav-link">強度チェッカー</a></li>
+            <li><a href="random-username-generator.html" class="nav-link active">ユーザー名生成</a></li>
+            <li><a href="random-name-generator.html" class="nav-link">名前生成</a></li>
+            <li><a href="secure-pin-generator.html" class="nav-link">PIN生成</a></li>
         </ul>
-        <p>&copy; 2026 Tools Hub. All rights reserved.</p>
+        <p>&copy; 2026 ツールハブ. All rights reserved.</p>
     </footer>
 
     <script src="../js/random-username-generator.js"></script>
 
     <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Random Username Generator",
-    "description": "Generate unique, random usernames instantly in the browser.",
-    "applicationCategory": "UtilityApplication",
-    "operatingSystem": "All",
-    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
-  }
-  </script>
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "ランダムユーザー名ジェネレーター",
+      "description": "ユニークでランダムなユーザー名を即座に生成します。",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "All",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY" }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "ユーザー名は安全ですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "はい。ランダムな単語を組み合わせるため、個人を特定しにくい名前を生成できます。"
+          }
+        }
+      ]
+    }
+    </script>
 </body>
 
 </html>

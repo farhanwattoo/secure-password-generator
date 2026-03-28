@@ -124,14 +124,14 @@ function calculateEntropy(password) {
 
 function updateStrength(password) {
   const entropy = calculateEntropy(password);
-  entropyValue.textContent = `Entropy: ${entropy.toFixed(2)} bits`;
-  let strength = 'Weak';
+  entropyValue.textContent = `エントロピー: ${entropy.toFixed(2)} bits`;
+  let strength = '弱い';
   let meterValue = 20;
-  if (entropy > 60) { strength = 'Very Strong'; meterValue = 100; }
-  else if (entropy > 45) { strength = 'Strong'; meterValue = 80; }
-  else if (entropy > 30) { strength = 'Medium'; meterValue = 50; }
-  else { strength = 'Weak'; meterValue = 20; }
-  strengthLabel.textContent = `Strength: ${strength}`;
+  if (entropy > 60) { strength = '非常に強い'; meterValue = 100; }
+  else if (entropy > 45) { strength = '強い'; meterValue = 80; }
+  else if (entropy > 30) { strength = '普通'; meterValue = 50; }
+  else { strength = '弱い'; meterValue = 20; }
+  strengthLabel.textContent = `強度: ${strength}`;
   strengthMeter.value = meterValue;
 }
 
@@ -160,22 +160,22 @@ copyBtn.addEventListener('click', async () => {
   const pwd = outputBox.textContent;
   try {
     await navigator.clipboard.writeText(pwd);
-    copyBtn.textContent = 'Copied!';
-    setTimeout(() => (copyBtn.textContent = 'Copy'), 1500);
+    copyBtn.textContent = 'コピーしました！';
+    setTimeout(() => (copyBtn.textContent = 'コピー'), 1500);
   } catch (e) {
     console.error('Copy failed', e);
   }
 });
 
 multipleBtn.addEventListener('click', () => {
-  const count = prompt('How many passwords?', '5');
+  const count = prompt('生成するパスワードの数は？', '5');
   const n = parseInt(count, 10);
   if (isNaN(n) || n <= 0) return;
   const passwords = [];
   for (let i = 0; i < n; i++) {
     passwords.push(generatePassword());
   }
-  alert('Generated passwords:\n' + passwords.join('\n'));
+  alert('生成されたパスワード:\n' + passwords.join('\n'));
 });
 
 // Tab navigation for additional generators

@@ -25,8 +25,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const password = passwordInput.value;
         if (!password) {
             strengthMeter.value = 0;
-            strengthLabel.textContent = 'Strength: N/A';
-            entropyValue.textContent = 'Entropy: 0 bits';
+            strengthLabel.textContent = '強度: N/A';
+            entropyValue.textContent = 'エントロピー: 0 bits';
             feedbackList.style.display = 'none';
             return;
         }
@@ -50,41 +50,41 @@ document.addEventListener('DOMContentLoaded', () => {
         const entropy = Math.log2(Math.pow(poolSize || 1, password.length));
         
         const feedback = [];
-        if (password.length < 8) feedback.push('Password is too short (min 8 characters).');
-        if (password.length < 12) feedback.push('Consider using at least 12 characters for better security.');
-        if (!hasUpper) feedback.push('Add uppercase letters.');
-        if (!hasLower) feedback.push('Add lowercase letters.');
-        if (!hasNumbers) feedback.push('Add numbers.');
-        if (!hasSymbols) feedback.push('Add special characters.');
+        if (password.length < 8) feedback.push('パスワードが短すぎます（最低8文字）。');
+        if (password.length < 12) feedback.push('セキュリティを高めるため、12文字以上の使用を検討してください。');
+        if (!hasUpper) feedback.push('大文字を追加してください。');
+        if (!hasLower) feedback.push('小文字を追加してください。');
+        if (!hasNumbers) feedback.push('数字を追加してください。');
+        if (!hasSymbols) feedback.push('記号を追加してください。');
         
         // Simple pattern checks
-        if (/(.)\1\1/.test(password)) feedback.push('Avoid repeating characters (e.g. "aaa").');
-        if (/123|abc|qwerty/i.test(password)) feedback.push('Avoid common sequences.');
+        if (/(.)\1\1/.test(password)) feedback.push('同じ文字の繰り返し（例: "aaa"）を避けてください。');
+        if (/123|abc|qwerty/i.test(password)) feedback.push('一般的な連続パターンを避けてください。');
 
         return { entropy, feedback, length: password.length };
     }
 
     function updateUI(stats) {
-        entropyValue.textContent = `Entropy: ${stats.entropy.toFixed(2)} bits`;
+        entropyValue.textContent = `エントロピー: ${stats.entropy.toFixed(2)} bits`;
         
-        let strength = 'Weak';
+        let strength = '弱い';
         let meterValue = 20;
 
         if (stats.entropy > 80 && stats.length >= 12) {
-            strength = 'Very Strong';
+            strength = '非常に強い';
             meterValue = 100;
         } else if (stats.entropy > 60) {
-            strength = 'Strong';
+            strength = '強い';
             meterValue = 80;
         } else if (stats.entropy > 40) {
-            strength = 'Medium';
+            strength = '普通';
             meterValue = 50;
         } else {
-            strength = 'Weak';
+            strength = '弱い';
             meterValue = 20;
         }
 
-        strengthLabel.textContent = `Strength: ${strength}`;
+        strengthLabel.textContent = `強度: ${strength}`;
         strengthMeter.value = meterValue;
 
         // Feedback

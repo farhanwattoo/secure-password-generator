@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Random Name Generator – Tools Hub</title>
+    <title>ランダム名前ジェネレーター – 安全なオンラインツールハブ</title>
     <meta name="description"
-        content="Generate realistic random first and last names instantly in your browser. No data is stored or transmitted." />
-    <meta name="keywords" content="random name generator, generate names, online name generator" />
+        content="リアルな姓名を即座にランダム生成します。データは保存も送信もされません。" />
+    <meta name="keywords" content="名前生成,姓名,ランダム生成,キャラクター名,安全" />
     <link rel="stylesheet" href="../css/style.css" />
 </head>
 
@@ -15,63 +15,101 @@
     <!-- ダーク/ライトモード切替 -->
     <button id="theme-toggle" aria-label="ダーク/ライトモード切替" class="theme-toggle">🌙</button>
 
-    <nav class="top-nav" aria-label="Main navigation">
+    <nav class="top-nav" aria-label="メインナビゲーション">
         <ul>
-            <li><a href="../index.html" class="nav-link">Home</a></li>
-            <li><a href="password-strength-checker.html" class="nav-link">Strength Checker</a></li>
-            <li><a href="random-username-generator.html" class="nav-link">Username Generator</a></li>
-            <li><a href="random-name-generator.html" class="nav-link active">Name Generator</a></li>
-            <li><a href="secure-pin-generator.html" class="nav-link">PIN Generator</a></li>
+            <li><a href="../index.html" class="nav-link">ホーム</a></li>
+            <li><a href="password-strength-checker.html" class="nav-link">強度チェッカー</a></li>
+            <li><a href="random-username-generator.html" class="nav-link">ユーザー名生成</a></li>
+            <li><a href="random-name-generator.html" class="nav-link active">名前生成</a></li>
+            <li><a href="secure-pin-generator.html" class="nav-link">PIN生成</a></li>
         </ul>
     </nav>
 
     <main>
         <section class="section">
-            <h1>Random Name Generator</h1>
-            <p class="notice">Generate realistic names for characters or placeholder data. Generation is locally processed.</p>
+            <h1>ランダム名前ジェネレーター</h1>
+            <p class="notice">キャラクター制作やテストデータ用のリアルな姓名を生成します。すべての処理はローカルで行われます。</p>
             <div class="generator-container">
-                <div class="output-box" id="name-output" aria-live="polite">Generate a name...</div>
+                <div class="output-box" id="name-output" aria-live="polite">名前を生成してください...</div>
                 <div class="controls">
                     <div class="checkboxes">
-                        <label><input type="radio" name="gender" value="both" checked /> Random Gender</label>
-                        <label><input type="radio" name="gender" value="male" /> Male</label>
-                        <label><input type="radio" name="gender" value="female" /> Female</label>
+                        <label><input type="radio" name="gender" value="both" checked /> 指定なし</label>
+                        <label><input type="radio" name="gender" value="male" /> 男性</label>
+                        <label><input type="radio" name="gender" value="female" /> 女性</label>
                     </div>
 
                     <div class="action-buttons">
-                        <button id="generate-name-btn" class="primary">Generate Name</button>
-                        <button id="copy-name-btn" class="secondary" disabled>Copy</button>
+                        <button id="generate-name-btn" class="primary">名前を生成</button>
+                        <button id="copy-name-btn" class="secondary" disabled>コピー</button>
                     </div>
                 </div>
             </div>
-            <p style="margin-top: 1rem;"><a href="../index.html">← Back to Password Generator</a></p>
+            <p style="margin-top: 1rem;"><a href="../index.html">← パスワードジェネレーターに戻る</a></p>
+        </section>
+
+        <!-- 教育コンテンツ -->
+        <section class="section">
+            <h2>ランダム名前ジェネレーターの用途</h2>
+            <p>このツールは以下のような場面で役立ちます：</p>
+            <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+                <li><strong>小説やゲームのキャラクター制作:</strong> 登場人物にぴったりの名前を素早く見つけられます。</li>
+                <li><strong>ソフトウェアテスト:</strong> データベースのテスト用にダミーの名前が必要な場合に最適です。</li>
+                <li><strong>プライバシー保護:</strong> アカウント登録時に本名を使いたくない場合の仮名として。</li>
+            </ul>
+        </section>
+
+        <!-- FAQ セクション -->
+        <section class="section" id="faq">
+            <h2>よくある質問 (FAQ)</h2>
+            <dl>
+                <dt>日本の名前も生成できますか？</dt>
+                <dd>現在のバージョンでは主に欧米風の名前を生成しますが、今後のアップデートで多言語対応を予定しています。</dd>
+                <dt>生成された名前の使用に制限はありますか？</dt>
+                <dd>いいえ、自由にご利用いただけます。著作権などは発生しません。</dd>
+            </dl>
         </section>
     </main>
 
-    <footer class="bottom-nav" aria-label="Footer navigation">
+    <footer class="bottom-nav" aria-label="フッターナビゲーション">
         <ul>
-            <li><a href="../index.html" class="nav-link">Home</a></li>
-            <li><a href="password-strength-checker.html" class="nav-link">Strength Checker</a></li>
-            <li><a href="random-username-generator.html" class="nav-link">Username Generator</a></li>
-            <li><a href="random-name-generator.html" class="nav-link active">Name Generator</a></li>
-            <li><a href="secure-pin-generator.html" class="nav-link">PIN Generator</a></li>
+            <li><a href="../index.html" class="nav-link">ホーム</a></li>
+            <li><a href="password-strength-checker.html" class="nav-link">強度チェッカー</a></li>
+            <li><a href="random-username-generator.html" class="nav-link">ユーザー名生成</a></li>
+            <li><a href="random-name-generator.html" class="nav-link active">名前生成</a></li>
+            <li><a href="secure-pin-generator.html" class="nav-link">PIN生成</a></li>
         </ul>
-        <p>&copy; 2026 Tools Hub. All rights reserved.</p>
+        <p>&copy; 2026 ツールハブ. All rights reserved.</p>
     </footer>
 
     <script src="../js/random-name-generator.js"></script>
 
     <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Random Name Generator",
-    "description": "Generate realistic random first and last names instantly in the browser.",
-    "applicationCategory": "UtilityApplication",
-    "operatingSystem": "All",
-    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
-  }
-  </script>
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "ランダム名前ジェネレーター",
+      "description": "リアルな姓名を即座にランダム生成します。",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "All",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY" }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "このツールは多言語対応していますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "現在は欧米風の名前を中心としていますが、機能拡張を予定しています。"
+          }
+        }
+      ]
+    }
+    </script>
 </body>
 
 </html>
