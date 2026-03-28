@@ -16,13 +16,18 @@
     <button id="theme-toggle" aria-label="ダーク/ライトモード切替" class="theme-toggle">🌙</button>
 
     <nav class="top-nav" aria-label="メインナビゲーション">
-        <ul>
-            <li><a href="../index.html" class="nav-link">ホーム</a></li>
-            <li><a href="password-strength-checker.html" class="nav-link">強度チェッカー</a></li>
-            <li><a href="random-username-generator.html" class="nav-link active">ユーザー名生成</a></li>
-            <li><a href="random-name-generator.html" class="nav-link">名前生成</a></li>
-            <li><a href="secure-pin-generator.html" class="nav-link">PIN生成</a></li>
-        </ul>
+        <a href="../index.html" class="site-brand">
+            <span>🔐</span> SecurePass Hub
+        </a>
+        <div class="nav-container">
+            <ul>
+                <li><a href="../index.html" class="nav-link">ホーム</a></li>
+                <li><a href="password-strength-checker.html" class="nav-link">強度チェッカー</a></li>
+                <li><a href="random-username-generator.html" class="nav-link active">ユーザー名生成</a></li>
+                <li><a href="random-name-generator.html" class="nav-link">名前生成</a></li>
+                <li><a href="secure-pin-generator.html" class="nav-link">PIN生成</a></li>
+            </ul>
+        </div>
     </nav>
 
     <main>
@@ -49,38 +54,51 @@
             <p style="margin-top: 1rem;"><a href="../index.html">← パスワードジェネレーターに戻る</a></p>
         </section>
 
-        <!-- 教育コンテンツ -->
-        <section class="section">
-            <h2>良いユーザー名の選び方</h2>
-            <p>オンラインでの匿名性を守りつつ、覚えやすいユーザー名を作るためのヒント：</p>
-            <ul style="margin-top: 1rem; padding-left: 1.5rem;">
-                <li><strong>個人情報を避ける:</strong> 本名、誕生日、居住地などは含めないようにしましょう。</li>
-                <li><strong>読みやすさ:</strong> 「SwiftLion」のように、単語を組み合わせると覚えやすくなります。</li>
-                <li><strong>独自性:</strong> 数字や記号を適宜混ぜることで、他のユーザーとの重複を避けられます。</li>
-            </ul>
+        <!-- 詳細教育コンテンツ -->
+        <section class="section content-detail">
+            <h2>オンラインアイデンティティと匿名性の守り方</h2>
+            <div class="detail-text">
+                <h3>なぜ「使い回し」のユーザー名が危険なのか？</h3>
+                <p>多くの人は、覚えやすさのためにすべてのサイトで同じユーザー名を使用します（例: "@tarosato_1990"）。しかし、これは「OSINT（オープンソース・インテリジェンス）」と呼ばれる手法で、あなたの行動履歴や個人情報を特定するための格好の材料となります。一つのサイトで調べたユーザー名を別のサイトで検索することで、あなたの住所や職場が特定されるリスクが生じます。</p>
+                
+                <h3>安全なユーザー名を作るための3つのルール</h3>
+                <ul>
+                    <li><strong>個人情報を混ぜない:</strong> 本名の一部、誕生日、居住地域、出身校などは、攻撃工程の「最初の足がかり」になります。</li>
+                    <li><strong>サイトごとに変える:</strong> 仕事用のプロフェッショナルなアカウントと、プライベートな趣味のアカウントでは、全く異なるユーザー名を設定するのが理想的です。</li>
+                    <li><strong>「ランダム＋単語」の組み合わせ:</strong> 当ツールのように、形容詞と名詞を組み合わせた名前は、人間味がありながらも個人を特定できない絶妙なバランスを保てます。</li>
+                </ul>
+            </div>
         </section>
 
         <!-- FAQ セクション -->
-        <section class="section" id="faq">
-            <h2>よくある質問 (FAQ)</h2>
+        <section class="section faq-section" id="faq">
+            <h2>よくある質問 (FAQ) - ユーザー名編</h2>
             <dl>
-                <dt>生成されたユーザー名は他で使われていますか？</dt>
-                <dd>このツールはランダムに生成するため、実際に使用可能かどうかは各サービスで確認する必要があります。</dd>
-                <dt>匿名性は保たれますか？</dt>
-                <dd>はい。このツールは完全にランダムな単語の組み合わせを使用するため、あなた自身の情報とは無関係な名前を作れます。</dd>
+                <dt>Q. 生成されたユーザー名が既に他の人に使われている場合はどうすればいいですか？</dt>
+                <dd>A. その時は「数字を含める」にチェックを入れて再生成するか、末尾に自分の好きな3〜4桁の数字を手動で加えてみてください。あるいは、形容詞をもう一つ付け加えるのも効果的です。</dd>
+
+                <dt>Q. 英語のユーザー名しか生成できないのですか？</dt>
+                <dd>A. はい。現在のSNSやゲームプラットフォームの多くは、英数字のみのユーザー名を前提としているため、互換性を考慮して英単語の組み合わせを採用しています。</dd>
+
+                <dt>Q. ゲームのキャラクター名（IGN）としても使えますか？</dt>
+                <dd>A. もちろんです！MMORPGやFPSなどのゲームで見栄えが良く、かつユニークな名前を生成するように調整されています。</dd>
             </dl>
         </section>
     </main>
 
     <footer class="bottom-nav" aria-label="フッターナビゲーション">
+        <div class="footer-brand">
+            <a href="../index.html" class="site-brand">🔐 SecurePass Hub</a>
+            <p>プライバシー重視の安全なツールコレクション</p>
+        </div>
         <ul>
-            <li><a href="../index.html" class="nav-link">ホーム</a></li>
+            <li><a href="../index.html" class="nav-link">ホーム (Default Page)</a></li>
             <li><a href="password-strength-checker.html" class="nav-link">強度チェッカー</a></li>
             <li><a href="random-username-generator.html" class="nav-link active">ユーザー名生成</a></li>
             <li><a href="random-name-generator.html" class="nav-link">名前生成</a></li>
             <li><a href="secure-pin-generator.html" class="nav-link">PIN生成</a></li>
         </ul>
-        <p>&copy; 2026 ツールハブ. All rights reserved.</p>
+        <p class="copyright">&copy; 2026 SecurePass Hub. All rights reserved. ユーザーのプライバシーを最優先に考えています。</p>
     </footer>
 
     <script src="../js/random-username-generator.js"></script>

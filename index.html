@@ -27,15 +27,19 @@
     <!-- ダーク/ライトモード切替 -->
     <button id="theme-toggle" aria-label="ダーク/ライトモード切替" class="theme-toggle">🌙</button>
 
-    <!-- 上部ナビゲーション -->
     <nav class="top-nav" aria-label="メインナビゲーション">
-        <ul>
-            <li><a href="#password-generator" class="nav-link active">パスワードジェネレーター</a></li>
-            <li><a href="tools/password-strength-checker.html" class="nav-link">パスワード強度チェッカー</a></li>
-            <li><a href="tools/random-username-generator.html" class="nav-link">ランダムユーザー名ジェネレーター</a></li>
-            <li><a href="tools/random-name-generator.html" class="nav-link">ランダム名前ジェネレーター</a></li>
-            <li><a href="tools/secure-pin-generator.html" class="nav-link">安全なPINジェネレーター</a></li>
-        </ul>
+        <a href="index.html" class="site-brand">
+            <span>🔐</span> SecurePass Hub
+        </a>
+        <div class="nav-container">
+            <ul>
+                <li><a href="index.html" class="nav-link active">ホーム</a></li>
+                <li><a href="tools/password-strength-checker.html" class="nav-link">強度チェッカー</a></li>
+                <li><a href="tools/random-username-generator.html" class="nav-link">ユーザー名生成</a></li>
+                <li><a href="tools/random-name-generator.html" class="nav-link">名前生成</a></li>
+                <li><a href="tools/secure-pin-generator.html" class="nav-link">PIN生成</a></li>
+            </ul>
+        </div>
     </nav>
 
     <main>
@@ -133,48 +137,65 @@
             </div>
         </section>
 
-        <!-- 教育コンテンツ -->
-        <section class="section" id="education">
-            <h2>強力なパスワードの作り方</h2>
-            <ul>
-                <li>12文字以上を使用し、長くするほど安全です。</li>
-                <li>大文字・小文字・数字・記号を組み合わせます。</li>
-                <li>名前や誕生日などの個人情報は避けましょう。</li>
-                <li>サイトごとにユニークなパスワードを使用します。</li>
-                <li>信頼できるパスワードマネージャーの利用を検討してください。</li>
-            </ul>
+        <!-- 詳細教育コンテンツ -->
+        <section class="section content-detail" id="education">
+            <h2>強力なパスワードの重要性と作成ガイド</h2>
+            <div class="detail-text">
+                <h3>なぜ強力なパスワードが必要なのか？</h3>
+                <p>現代のサイバー攻撃は非常に高度化しており、単純なパスワードは数秒で解読される可能性があります。強力なパスワードを使用することは、あなたのデジタル資産（金銭、個人情報、SNSアカウントなど）を守るための第一歩です。</p>
+                
+                <h3>パスワード強度の4大要素</h3>
+                <ul>
+                    <li><strong>長さ (Length):</strong> 最も重要な要素です。12文字以上、できれば16文字以上を推奨します。文字数が1つ増えるごとに、解読難易度は飛躍的に上昇します。</li>
+                    <li><strong>多様性 (Variety):</strong> 大文字、小文字、数字、特殊記号をすべて含めます。これにより、ブルートフォース攻撃（総当たり）に使用される文字の組み合わせが天文学的な数字になります。</li>
+                    <li><strong>ランダム性 (Randomness):</strong> 単語辞書にある言葉（例: "password123"）や、キーボードの配列（例: "qwerty"）は、攻撃用のプログラムにあらかじめ組み込まれているため避けなければなりません。</li>
+                    <li><strong>独自性 (Uniqueness):</strong> すべてのサービスで異なるパスワードを使用してください。一つのサイトから漏洩したパスワードが、他のサイトの不正アクセス（リスト型攻撃）に使われるのを防ぐためです。</li>
+                </ul>
+
+                <h3>NIST（米国国立標準技術研究所）の推奨事項</h3>
+                <p>最新のガイドラインでは、定期的なパスワード変更よりも、長くランダムな「パスフレーズ」の使用と、多要素認証 (MFA) の導入が強く推奨されています。</p>
+            </div>
         </section>
 
         <!-- FAQ セクション -->
-        <section class="section" id="faq">
-            <h2>よくある質問</h2>
+        <section class="section faq-section" id="faq">
+            <h2>よくある質問 (FAQ) - 詳細版</h2>
             <dl>
-                <dt>パスワードジェネレーターとは何ですか？</dt>
-                <dd>パスワードジェネレーターは、攻撃者が推測しにくいランダムで予測不可能なパスワードを生成します。</dd>
-                <dt>生成されたパスワードは安全ですか？</dt>
-                <dd>はい。当ツールはブラウザの暗号学的に安全な乱数生成器 (window.crypto) を使用し、高エントロピーを確保しています。</dd>
-                <dt>パスワードはどのくらいの長さが推奨されますか？</dt>
-                <dd>最低でも12文字を推奨します。長くなるほどセキュリティは指数的に向上します。</dd>
-                <dt>パスワードが強いとみなされる条件は？</dt>
-                <dd>長さ、文字種の組み合わせ、ランダム性です。一般的な単語やパターン、繰り返し文字は避けましょう。</dd>
-                <dt>ハッカーはランダムパスワードを推測できるでしょうか？</dt>
-                <dd>正確なパスワードが分からない限り、高エントロピーなランダムパスワードを推測することは計算上不可能です。</dd>
-                <dt>パスワードマネージャーは使用すべきですか？</dt>
-                <dd>ぜひご利用ください。パスワードマネージャーは強力でユニークなパスワードを安全に保存し、ログインを簡素化します。</dd>
+                <dt>Q. このパスワードジェネレーターは本当に安全ですか？</dt>
+                <dd>A. はい、非常に安全です。このサイトは「ローカル完結型」であり、パスワード生成ロジックはすべてあなたのデバイス上のブラウザ内で動作します。生成されたデータがネットワークへ送信されることや、サーバーに保存されることは一切ありません。ソースコードを確認いただければ、外部送信を行っていないことがわかります。</dd>
+
+                <dt>Q. 生成されたパスワードを覚えるのが大変です。どうすればいいですか？</dt>
+                <dd>A. 強力なパスワードをすべて記憶するのは不可能です。信頼できる「パスワードマネージャー」（例: 1Password, Bitwarden, iCloud Keychainなど）を使用することを強くお勧めします。これにより、覚えるのは一つの「マスターパスワード」だけで済むようになります。</dd>
+
+                <dt>Q. WiFiパスワードにも使えますか？</dt>
+                <dd>A. もちろん可能です。WPA2/WPA3などのWiFi規格では、特殊記号を含む長いパスワードが非常に有効です。ただし、古いデバイスによっては一部の記号に対応していない場合があるため、その際は「類似文字を除外」や「記号なし」を検討してください。</dd>
+
+                <dt>Q. ハッカーはどうやってパスワードを解析するのですか？</dt>
+                <dd>A. 主に以下の手法が使われます。
+                    <ul>
+                        <li><strong>ブルートフォース攻撃:</strong> すべての組み合わせを試す。</li>
+                        <li><strong>辞書攻撃:</strong> よく使われる単語や過去の漏洩リストを試す。</li>
+                        <li><strong>フィッシング:</strong> 偽サイトであなたに入力させる。</li>
+                    </ul>
+                    当ツールのランダム生成パスワードは、ブルートフォース攻撃と辞書攻撃に対して極めて高い耐性を持ちます。</dd>
             </dl>
         </section>
     </main>
 
     <!-- フッターナビゲーション -->
     <footer class="bottom-nav" aria-label="フッターナビゲーション">
+        <div class="footer-brand">
+            <a href="index.html" class="site-brand">🔐 SecurePass Hub</a>
+            <p>プライバシー重視の安全なツールコレクション</p>
+        </div>
         <ul>
-            <li><a href="#password-generator" class="nav-link">パスワードジェネレーター</a></li>
+            <li><a href="index.html" class="nav-link">ホーム (Default Page)</a></li>
             <li><a href="tools/password-strength-checker.html" class="nav-link">パスワード強度チェッカー</a></li>
             <li><a href="tools/random-username-generator.html" class="nav-link">ランダムユーザー名ジェネレーター</a></li>
             <li><a href="tools/random-name-generator.html" class="nav-link">ランダム名前ジェネレーター</a></li>
             <li><a href="tools/secure-pin-generator.html" class="nav-link">安全なPINジェネレーター</a></li>
         </ul>
-        <p>&copy; 2026 ツールハブ. All rights reserved.</p>
+        <p class="copyright">&copy; 2026 SecurePass Hub. All rights reserved. ユーザーのプライバシーを最優先に考えています。</p>
     </footer>
 
     <!-- JSON‑LD 構造化データ -->

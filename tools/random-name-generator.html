@@ -16,13 +16,18 @@
     <button id="theme-toggle" aria-label="ダーク/ライトモード切替" class="theme-toggle">🌙</button>
 
     <nav class="top-nav" aria-label="メインナビゲーション">
-        <ul>
-            <li><a href="../index.html" class="nav-link">ホーム</a></li>
-            <li><a href="password-strength-checker.html" class="nav-link">強度チェッカー</a></li>
-            <li><a href="random-username-generator.html" class="nav-link">ユーザー名生成</a></li>
-            <li><a href="random-name-generator.html" class="nav-link active">名前生成</a></li>
-            <li><a href="secure-pin-generator.html" class="nav-link">PIN生成</a></li>
-        </ul>
+        <a href="../index.html" class="site-brand">
+            <span>🔐</span> SecurePass Hub
+        </a>
+        <div class="nav-container">
+            <ul>
+                <li><a href="../index.html" class="nav-link">ホーム</a></li>
+                <li><a href="password-strength-checker.html" class="nav-link">強度チェッカー</a></li>
+                <li><a href="random-username-generator.html" class="nav-link">ユーザー名生成</a></li>
+                <li><a href="random-name-generator.html" class="nav-link active">名前生成</a></li>
+                <li><a href="secure-pin-generator.html" class="nav-link">PIN生成</a></li>
+            </ul>
+        </div>
     </nav>
 
     <main>
@@ -47,38 +52,54 @@
             <p style="margin-top: 1rem;"><a href="../index.html">← パスワードジェネレーターに戻る</a></p>
         </section>
 
-        <!-- 教育コンテンツ -->
-        <section class="section">
-            <h2>ランダム名前ジェネレーターの用途</h2>
-            <p>このツールは以下のような場面で役立ちます：</p>
-            <ul style="margin-top: 1rem; padding-left: 1.5rem;">
-                <li><strong>小説やゲームのキャラクター制作:</strong> 登場人物にぴったりの名前を素早く見つけられます。</li>
-                <li><strong>ソフトウェアテスト:</strong> データベースのテスト用にダミーの名前が必要な場合に最適です。</li>
-                <li><strong>プライバシー保護:</strong> アカウント登録時に本名を使いたくない場合の仮名として。</li>
-            </ul>
+        <!-- 詳細教育コンテンツ -->
+        <section class="section content-detail">
+            <h2>創作と開発のための名前生成ガイド</h2>
+            <div class="detail-text">
+                <h3>リアルな名前の構成要素</h3>
+                <p>名前は、その人物の文化的背景や時代設定を象徴する重要な要素です。当ツールでは、膨大な人口統計データベースを参考に、実際に世界中で使用されている名字（苗字）と名前（下位の名前）を組み合わせています。キャラクターにリアリティを持たせることで、コンテンツ全体の品質が向上します。</p>
+                
+                <h3>ランダム名前生成器が活躍するシーン</h3>
+                <ul>
+                    <li><strong>TRPG・ボードゲームのマスター:</strong> セッション中に急に現れたNPCに、その場で説得力のある名前を付けられます。</li>
+                    <li><strong>小説執筆・脚本制作:</strong> ストーリーの本質に関わらない脇役の名前に悩む時間を、プロット制作に充てることができます。</li>
+                    <li><strong>Webサイトのデモンストレーション:</strong> 顧客へのデモ画面で、"田中 太郎"などの典型例ばかりでなく、多様な名前を表示することでプロフェッショナルな印象を与えられます。</li>
+                </ul>
+
+                <h3>プライバシー保護のための「仮名」として</h3>
+                <p>アンケート回答や、それほど重要ではないウェブサービスへの登録時に本名を使いたくない場合、当ツールで生成されたリアルな名前を使用することで、スパムやデータ流出時のリスクを軽減できます。</p>
+            </div>
         </section>
 
         <!-- FAQ セクション -->
-        <section class="section" id="faq">
-            <h2>よくある質問 (FAQ)</h2>
+        <section class="section faq-section" id="faq">
+            <h2>よくある質問 (FAQ) - 名前生成編</h2>
             <dl>
-                <dt>日本の名前も生成できますか？</dt>
-                <dd>現在のバージョンでは主に欧米風の名前を生成しますが、今後のアップデートで多言語対応を予定しています。</dd>
-                <dt>生成された名前の使用に制限はありますか？</dt>
-                <dd>いいえ、自由にご利用いただけます。著作権などは発生しません。</dd>
+                <dt>Q. 生成された名前に著作権はありますか？</dt>
+                <dd>A. いいえ、ありません。当ツールで生成された名前は、小説の出版、ゲームの販売、広告制作など、あらゆる商用・個人的なプロジェクトで自由にお使いいただけます。</dd>
+
+                <dt>Q. 実在する人物と同じ名前が生成されることはありますか？</dt>
+                <dd>A. 本ツールは実在する名字と名前をランダムに組み合わせています。そのため、偶然にも実在の人物と同姓同名になる可能性はゼロではありません。創作物で使用する際は、必要に応じてご自身で再確認することをお勧めします。</dd>
+
+                <dt>Q. 日本人以外の名前も増やしてほしいです。</dt>
+                <dd>A. 現在は欧米風（英語圏）の名前を中心に提供していますが、ユーザーの皆様からの要望に応じて、今後は多言語・多文化のデータベースを拡充していく予定です。</dd>
             </dl>
         </section>
     </main>
 
     <footer class="bottom-nav" aria-label="フッターナビゲーション">
+        <div class="footer-brand">
+            <a href="../index.html" class="site-brand">🔐 SecurePass Hub</a>
+            <p>プライバシー重視の安全なツールコレクション</p>
+        </div>
         <ul>
-            <li><a href="../index.html" class="nav-link">ホーム</a></li>
+            <li><a href="../index.html" class="nav-link">ホーム (Default Page)</a></li>
             <li><a href="password-strength-checker.html" class="nav-link">強度チェッカー</a></li>
             <li><a href="random-username-generator.html" class="nav-link">ユーザー名生成</a></li>
             <li><a href="random-name-generator.html" class="nav-link active">名前生成</a></li>
             <li><a href="secure-pin-generator.html" class="nav-link">PIN生成</a></li>
         </ul>
-        <p>&copy; 2026 ツールハブ. All rights reserved.</p>
+        <p class="copyright">&copy; 2026 SecurePass Hub. All rights reserved. ユーザーのプライバシーを最優先に考えています。</p>
     </footer>
 
     <script src="../js/random-name-generator.js"></script>

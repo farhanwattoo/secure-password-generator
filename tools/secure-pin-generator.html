@@ -16,13 +16,18 @@
     <button id="theme-toggle" aria-label="ダーク/ライトモード切替" class="theme-toggle">🌙</button>
 
     <nav class="top-nav" aria-label="メインナビゲーション">
-        <ul>
-            <li><a href="../index.html" class="nav-link">ホーム</a></li>
-            <li><a href="password-strength-checker.html" class="nav-link">強度チェッカー</a></li>
-            <li><a href="random-username-generator.html" class="nav-link">ユーザー名生成</a></li>
-            <li><a href="random-name-generator.html" class="nav-link">名前生成</a></li>
-            <li><a href="secure-pin-generator.html" class="nav-link active">PIN生成</a></li>
-        </ul>
+        <a href="../index.html" class="site-brand">
+            <span>🔐</span> SecurePass Hub
+        </a>
+        <div class="nav-container">
+            <ul>
+                <li><a href="../index.html" class="nav-link">ホーム</a></li>
+                <li><a href="password-strength-checker.html" class="nav-link">強度チェッカー</a></li>
+                <li><a href="random-username-generator.html" class="nav-link">ユーザー名生成</a></li>
+                <li><a href="random-name-generator.html" class="nav-link">名前生成</a></li>
+                <li><a href="secure-pin-generator.html" class="nav-link active">PIN生成</a></li>
+            </ul>
+        </div>
     </nav>
 
     <main>
@@ -44,38 +49,53 @@
             <p style="margin-top: 1rem;"><a href="../index.html">← パスワードジェネレーターに戻る</a></p>
         </section>
 
-        <!-- 教育コンテンツ -->
-        <section class="section">
-            <h2>安全なPINとは？</h2>
-            <p>銀行のATMやスマートフォンのロック解除に使用されるPINを安全に保つためのポイント：</p>
-            <ul style="margin-top: 1rem; padding-left: 1.5rem;">
-                <li><strong>連続した数字を避ける:</strong> 「1234」や「9876」はすぐに推測されます。</li>
-                <li><strong>同じ数字の繰り返しを避ける:</strong> 「0000」や「1111」は非常に危険です。</li>
-                <li><strong>意味のある数字を避ける:</strong> 誕生日や記念日は、あなたを知る人物に簡単に破られます。</li>
-            </ul>
+        <!-- 詳細教育コンテンツ -->
+        <section class="section content-detail">
+            <h2>安全なPIN（暗証番号）の科学</h2>
+            <div class="detail-text">
+                <h3>4桁のPINはどれだけ安全か？</h3>
+                <p>数年前まで主流だった「4桁のPIN」は、全部で10,000通り（0000〜9999）の組み合わせしかありません。これはランダムな推測であっても0.01%の確率で当たってしまいます。最近のスマートフォンや銀行口座が6桁（1,000,000通り）以上を推奨するのは、このセキュリティリスクを大幅に下げるためです。</p>
+                
+                <h3>当ツールの「暗号学的に安全」という仕組み</h3>
+                <p>多くのサイトにある「おみくじ」のような乱数生成は、実は予測が可能です。しかし当ツールは、OS（WindowsやiOSなど）が提供する「Web Crypto API」を使用しています。これはハードウェアのノイズなど、予測不可能な物理現象を利用して生成される本物の乱数であり、攻撃者による予測を完全に遮断します。</p>
+
+                <h3>さらに安全に使用するためのヒント</h3>
+                <ul>
+                    <li><strong>ショルダーハッキング対策:</strong> PINを入力する際は、背後から覗かれないよう十分注意してください。</li>
+                    <li><strong>デバイスごとの個別設定:</strong> スマートフォンの画面ロック、銀行カード、玄関の電子錠。すべて同じPINにするのは非常に危険です。当ツールを使って、用途ごとに別々のPINを生成してください。</li>
+                </ul>
+            </div>
         </section>
 
         <!-- FAQ セクション -->
-        <section class="section" id="faq">
-            <h2>よくある質問 (FAQ)</h2>
+        <section class="section faq-section" id="faq">
+            <h2>よくある質問 (FAQ) - PIN生成編</h2>
             <dl>
-                <dt>「暗号学的に安全」とはどういう意味ですか？</dt>
-                <dd>コンピュータの標準的な乱数よりも予測が難しく、セキュリティ目的（暗号化など）に適した高品質な乱数を使用していることを意味します。</dd>
-                <dt>生成されたPINが「0000」になることはありますか？</dt>
-                <dd>確率は非常に低いですが、完全にランダムであるため論理的には起こり得ます。その場合は再度生成することをお勧めします。</dd>
+                <dt>Q. PINの種類に制限はありますか？</dt>
+                <dd>A. いいえ、当ツールは3桁から12桁まで自由に設定できます。セキュリティと利便性のバランスを考え、多くの用途では6〜8桁をお勧めしています。</dd>
+
+                <dt>Q. 推測されやすいPINは除外されていますか？</dt>
+                <dd>A. このジェネレーターは「完全なランダム」を重視しています。そのため、非常に低い確率ですが「1111」や「1234」が生成されることがあります。もし不快・不安に感じるPINが生成された場合は、遠慮なく再生成ボタンをクリックしてください。</dd>
+
+                <dt>Q. このツールでの作業履歴は残りますか？</dt>
+                <dd>A. 残りません。あなたがどのPINをいつ生成したかは、当サイトの運営者も含め、誰も知ることはできません。ページを閉じればすべてのデータは完全に消去されます。</dd>
             </dl>
         </section>
     </main>
 
     <footer class="bottom-nav" aria-label="フッターナビゲーション">
+        <div class="footer-brand">
+            <a href="../index.html" class="site-brand">🔐 SecurePass Hub</a>
+            <p>プライバシー重視の安全なツールコレクション</p>
+        </div>
         <ul>
-            <li><a href="../index.html" class="nav-link">ホーム</a></li>
+            <li><a href="../index.html" class="nav-link">ホーム (Default Page)</a></li>
             <li><a href="password-strength-checker.html" class="nav-link">強度チェッカー</a></li>
             <li><a href="random-username-generator.html" class="nav-link">ユーザー名生成</a></li>
             <li><a href="random-name-generator.html" class="nav-link">名前生成</a></li>
             <li><a href="secure-pin-generator.html" class="nav-link active">PIN生成</a></li>
         </ul>
-        <p>&copy; 2026 ツールハブ. All rights reserved.</p>
+        <p class="copyright">&copy; 2026 SecurePass Hub. All rights reserved. ユーザーのプライバシーを最優先に考えています。</p>
     </footer>
 
     <script src="../js/secure-pin-generator.js"></script>
