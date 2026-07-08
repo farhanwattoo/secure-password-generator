@@ -1,6 +1,8 @@
 // random-name-generator.js
+// 英語圏の姓名をランダムに組み合わせて生成する
 
 document.addEventListener('DOMContentLoaded', () => {
+    const U = window.SiteUtils;
     const outputBox = document.getElementById('name-output');
     const generateBtn = document.getElementById('generate-name-btn');
     const copyBtn = document.getElementById('copy-name-btn');
@@ -10,18 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const firstNamesFemale = ['Mary', 'Patricia', 'Jennifer', 'Linda', 'Elizabeth', 'Barbara', 'Susan', 'Jessica', 'Sarah', 'Karen', 'Nancy', 'Lisa', 'Betty', 'Margaret', 'Sandra', 'Ashley', 'Kimberly', 'Emily', 'Donna', 'Michelle'];
     const lastNames = ['Smith', 'Johnson', 'Williams', 'Brown', 'Jones', 'Garcia', 'Miller', 'Davis', 'Rodriguez', 'Martinez', 'Hernandez', 'Lopez', 'Gonzalez', 'Wilson', 'Anderson', 'Thomas', 'Taylor', 'Moore', 'Jackson', 'Martin'];
 
-    // Theme toggle initialization
-    const themeToggle = document.getElementById('theme-toggle');
-    function setTheme(theme) {
-        document.documentElement.setAttribute('data-theme', theme);
-        localStorage.setItem('theme', theme);
-        if (themeToggle) themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
-    }
-    themeToggle?.addEventListener('click', () => {
-        const current = document.documentElement.getAttribute('data-theme') || 'light';
-        setTheme(current === 'dark' ? 'light' : 'dark');
-    });
-    setTheme(localStorage.getItem('theme') || 'light');
+    let lastName = '';
 
     generateBtn.addEventListener('click', () => {
         let gender = 'both';
@@ -34,28 +25,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let first;
         if (gender === 'male') {
-            first = firstNamesMale[Math.floor(Math.random() * firstNamesMale.length)];
+            first = firstNamesMale[U.secureRandomInt(firstNamesMale.length)];
         } else if (gender === 'female') {
-            first = firstNamesFemale[Math.floor(Math.random() * firstNamesFemale.length)];
+            first = firstNamesFemale[U.secureRandomInt(firstNamesFemale.length)];
         } else {
             const pool = firstNamesMale.concat(firstNamesFemale);
-            first = pool[Math.floor(Math.random() * pool.length)];
+            first = pool[U.secureRandomInt(pool.length)];
         }
 
-        const last = lastNames[Math.floor(Math.random() * lastNames.length)];
-        outputBox.textContent = `${first} ${last}`;
+        const last = lastNames[U.secureRandomInt(lastNames.length)];
+        lastName = `${first} ${last}`;
+        outputBox.textContent = lastName;
+        outputBox.classList.remove('placeholder');
         copyBtn.disabled = false;
-        copyBtn.textContent = 'コピー';
     });
 
-    copyBtn.addEventListener('click', async () => {
-        try {
-            await navigator.clipboard.writeText(outputBox.textContent);
-            const originalText = copyBtn.textContent;
-            copyBtn.textContent = 'コピーしました！';
-            setTimeout(() => copyBtn.textContent = originalText, 1500);
-        } catch (err) {
-            console.error('Failed to copy!', err);
-        }
-    });
+    U.bindCopyButton(copyBtn, () => lastName);
 });

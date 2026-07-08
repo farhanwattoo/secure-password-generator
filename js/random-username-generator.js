@@ -1,6 +1,8 @@
 // random-username-generator.js
+// 形容詞＋名詞ベースのユーザー名生成（乱数は Web Crypto API を使用）
 
 document.addEventListener('DOMContentLoaded', () => {
+    const U = window.SiteUtils;
     const outputBox = document.getElementById('username-output');
     const lengthSlider = document.getElementById('username-length');
     const lengthVal = document.getElementById('username-length-val');
@@ -12,67 +14,44 @@ document.addEventListener('DOMContentLoaded', () => {
     const adjectives = ['Swift', 'Bold', 'Silent', 'Mighty', 'Clever', 'Quick', 'Happy', 'Grand', 'Epic', 'Fancy', 'Smart', 'Sharp', 'Cool', 'Vivid', 'Wild', 'Chill', 'Pro', 'Elite', 'Lone', 'Hyper'];
     const nouns = ['Lion', 'Hawk', 'Wolf', 'Eagle', 'Tiger', 'Panda', 'Shark', 'Falcon', 'Ghost', 'Knight', 'Shadow', 'Storm', 'Pixel', 'Coder', 'Gamer', 'Nova', 'Alpha', 'Zenith', 'Titan', 'Aura'];
 
-    // Theme toggle initialization
-    const themeToggle = document.getElementById('theme-toggle');
-    function setTheme(theme) {
-        document.documentElement.setAttribute('data-theme', theme);
-        localStorage.setItem('theme', theme);
-        if (themeToggle) themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
-    }
-    themeToggle?.addEventListener('click', () => {
-        const current = document.documentElement.getAttribute('data-theme') || 'light';
-        setTheme(current === 'dark' ? 'light' : 'dark');
-    });
-    setTheme(localStorage.getItem('theme') || 'light');
+    let lastUsername = '';
 
     lengthSlider.addEventListener('input', () => {
         lengthVal.textContent = lengthSlider.value;
     });
 
     generateBtn.addEventListener('click', () => {
-        const username = generateUsername();
-        outputBox.textContent = username;
+        lastUsername = generateUsername();
+        outputBox.textContent = lastUsername;
+        outputBox.classList.remove('placeholder');
         copyBtn.disabled = false;
-        copyBtn.textContent = 'コピー';
     });
 
-    copyBtn.addEventListener('click', async () => {
-        try {
-            await navigator.clipboard.writeText(outputBox.textContent);
-            const originalText = copyBtn.textContent;
-            copyBtn.textContent = 'コピーしました！';
-            setTimeout(() => copyBtn.textContent = originalText, 1500);
-        } catch (err) {
-            console.error('Failed to copy!', err);
-        }
-    });
+    U.bindCopyButton(copyBtn, () => lastUsername);
 
     function generateUsername() {
-        let adj = adjectives[Math.floor(Math.random() * adjectives.length)];
-        let noun = nouns[Math.floor(Math.random() * nouns.length)];
+        const adj = adjectives[U.secureRandomInt(adjectives.length)];
+        const noun = nouns[U.secureRandomInt(nouns.length)];
         let username = adj + noun;
 
         if (includeNumbers.checked) {
-            const num = Math.floor(Math.random() * 9999);
-            username += num;
+            username += String(U.secureRandomInt(10000));
         }
 
         if (includeSymbols.checked) {
-            const symbols = ['_', '-'];
-            const sym = symbols[Math.floor(Math.random() * symbols.length)];
-            const pos = Math.floor(Math.random() * (username.length - 1)) + 1;
+            const sym = ['_', '-'][U.secureRandomInt(2)];
+            const pos = 1 + U.secureRandomInt(username.length - 1);
             username = username.slice(0, pos) + sym + username.slice(pos);
         }
 
-        // Adjust to length if needed
-        const targetLength = parseInt(lengthSlider.value);
+        // 指定の長さに合わせる
+        const targetLength = parseInt(lengthSlider.value, 10);
         if (username.length > targetLength) {
             username = username.substring(0, targetLength);
-        } else if (username.length < targetLength) {
-            // Fill with random chars if too short (rare with adjectives+nouns)
+        } else {
             const chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
             while (username.length < targetLength) {
-                username += chars.charAt(Math.floor(Math.random() * chars.length));
+                username += U.secureRandomChar(chars);
             }
         }
 

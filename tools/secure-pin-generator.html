@@ -4,49 +4,71 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>安全なPINジェネレーター – パスワード生成.com</title>
+    <title>PINジェネレーター - 安全な暗証番号を無料生成 | パスワード生成.com</title>
     <meta name="description"
-        content="パスワード生成.comのPIN生成。高エントロピーな数値PINを即座に生成します。" />
-    <meta name="keywords" content="PIN生成,乱数,暗証番号,セキュリティ,安全" />
+        content="3〜12桁の数値PIN（暗証番号）を暗号学的に安全な乱数で無料生成。スマホのロックや銀行カードなど用途別に安全なPINを作成できます。処理はすべてブラウザ内で完結します。" />
+    <link rel="canonical" href="https://secure-password-generator-ten.vercel.app/tools/secure-pin-generator.html" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+    <meta name="theme-color" content="#4f46e5" />
+    <script>
+        (function () { try { var t = localStorage.getItem('theme'); if (t !== 'dark' && t !== 'light') { t = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; } document.documentElement.setAttribute('data-theme', t); } catch (e) { } })();
+    </script>
+    <!-- Open Graph -->
+    <meta property="og:site_name" content="パスワード生成.com" />
+    <meta property="og:title" content="PINジェネレーター - 安全な暗証番号を無料生成" />
+    <meta property="og:description" content="3〜12桁の数値PINを暗号学的に安全な乱数で即座に生成します。" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://secure-password-generator-ten.vercel.app/tools/secure-pin-generator.html" />
+    <meta property="og:image" content="https://secure-password-generator-ten.vercel.app/assets/og-image.png" />
+    <meta property="og:locale" content="ja_JP" />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="PINジェネレーター - 安全な暗証番号を無料生成" />
+    <meta name="twitter:description" content="3〜12桁の数値PINを暗号学的に安全な乱数で即座に生成します。" />
+    <meta name="twitter:image" content="https://secure-password-generator-ten.vercel.app/assets/og-image.png" />
     <link rel="stylesheet" href="../css/style.css" />
+    <script src="../js/site.js" defer></script>
+    <script src="../js/secure-pin-generator.js" defer></script>
 </head>
 
 <body>
-    <!-- ダーク/ライトモード切替 -->
-    <button id="theme-toggle" aria-label="ダーク/ライトモード切替" class="theme-toggle">🌙</button>
-
-    <nav class="top-nav" aria-label="メインナビゲーション">
+    <header class="top-nav">
         <a href="../index.html" class="site-brand">
-            <span>🔐</span> パスワード生成.com
+            <span aria-hidden="true">🔐</span><span class="brand-text">パスワード生成.com</span>
         </a>
-        <div class="nav-container">
+        <nav class="nav-container" id="site-menu" aria-label="メインナビゲーション">
             <ul>
                 <li><a href="../index.html" class="nav-link">ホーム</a></li>
                 <li><a href="password-strength-checker.html" class="nav-link">強度チェッカー</a></li>
                 <li><a href="random-username-generator.html" class="nav-link">ユーザー名生成</a></li>
                 <li><a href="random-name-generator.html" class="nav-link">名前生成</a></li>
-                <li><a href="secure-pin-generator.html" class="nav-link active">PIN生成</a></li>
+                <li><a href="secure-pin-generator.html" class="nav-link active" aria-current="page">PIN生成</a></li>
             </ul>
+        </nav>
+        <div class="nav-actions">
+            <button id="theme-toggle" aria-label="ダークモードに切り替え" class="theme-toggle">🌙</button>
+            <button id="nav-toggle" class="nav-toggle" aria-expanded="false" aria-controls="site-menu"
+                aria-label="メニューを開閉">☰</button>
         </div>
-    </nav>
+    </header>
 
     <main>
         <section class="section">
             <h1>安全なPINジェネレーター</h1>
             <p class="notice">任意の長さの数値PIN（暗証番号）を生成します。暗号学的に安全な乱数を使用しています。</p>
             <div class="generator-container">
-                <div class="output-box" id="pin-output" aria-live="polite">PINを生成してください...</div>
+                <div class="output-box placeholder" id="pin-output" aria-live="polite">「PINを生成」ボタンを押してください</div>
                 <div class="controls">
-                    <label for="pin-length">PINの長さ: <span id="pin-length-val">4</span></label>
-                    <input type="range" id="pin-length" min="3" max="12" value="4" />
-                    
+                    <label for="pin-length">PINの長さ: <span id="pin-length-val">6</span></label>
+                    <input type="range" id="pin-length" min="3" max="12" value="6" />
                     <div class="action-buttons">
                         <button id="generate-pin-btn" class="primary">PINを生成</button>
                         <button id="copy-pin-btn" class="secondary" disabled>コピー</button>
                     </div>
                 </div>
             </div>
-            <p style="margin-top: 1rem;"><a href="../index.html">← パスワードジェネレーターに戻る</a></p>
+            <p class="back-link"><a href="../index.html">← パスワードジェネレーターに戻る</a></p>
         </section>
 
         <!-- 詳細教育コンテンツ -->
@@ -55,7 +77,7 @@
             <div class="detail-text">
                 <h3>4桁のPINはどれだけ安全か？</h3>
                 <p>数年前まで主流だった「4桁のPIN」は、全部で10,000通り（0000〜9999）の組み合わせしかありません。これはランダムな推測であっても0.01%の確率で当たってしまいます。最近のスマートフォンや銀行口座が6桁（1,000,000通り）以上を推奨するのは、このセキュリティリスクを大幅に下げるためです。</p>
-                
+
                 <h3>当ツールの「暗号学的に安全」という仕組み</h3>
                 <p>多くのサイトにある「おみくじ」のような乱数生成は、実は予測が可能です。しかし当ツールは、OS（WindowsやiOSなど）が提供する「Web Crypto API」を使用しています。これはハードウェアのノイズなど、予測不可能な物理現象を利用して生成される本物の乱数であり、攻撃者による予測を完全に遮断します。</p>
 
@@ -83,21 +105,22 @@
         </section>
     </main>
 
-    <footer class="bottom-nav" aria-label="フッターナビゲーション">
+    <footer class="bottom-nav">
         <div class="footer-brand">
-            <a href="../index.html" class="site-brand">🔐 パスワード生成.com</a>
+            <a href="../index.html" class="site-brand"><span aria-hidden="true">🔐</span><span
+                    class="brand-text">パスワード生成.com</span></a>
             <p>プライバシー重視の安全なツールコレクション</p>
         </div>
-        <nav class="tool-links">
+        <nav class="tool-links" aria-label="ツール一覧">
             <ul>
-                <li><a href="../index.html" class="nav-link">ホーム (Default Page)</a></li>
+                <li><a href="../index.html" class="nav-link">ホーム</a></li>
                 <li><a href="password-strength-checker.html" class="nav-link">強度チェッカー</a></li>
                 <li><a href="random-username-generator.html" class="nav-link">ユーザー名生成</a></li>
                 <li><a href="random-name-generator.html" class="nav-link">名前生成</a></li>
                 <li><a href="secure-pin-generator.html" class="nav-link active">PIN生成</a></li>
             </ul>
         </nav>
-        <nav class="legal-nav">
+        <nav class="legal-nav" aria-label="規約・ポリシー">
             <ul>
                 <li><a href="../legal/privacy-policy.html" class="nav-link">プライバシーポリシー</a></li>
                 <li><a href="../legal/terms-of-service.html" class="nav-link">利用規約</a></li>
@@ -107,17 +130,27 @@
         <p class="copyright">&copy; 2026 パスワード生成.com. All rights reserved.</p>
     </footer>
 
-    <script src="../js/secure-pin-generator.js"></script>
-
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "SoftwareApplication",
       "name": "安全なPINジェネレーター",
+      "url": "https://secure-password-generator-ten.vercel.app/tools/secure-pin-generator.html",
       "description": "高エントロピーな数値PINを即座に生成します。",
       "applicationCategory": "SecurityApplication",
       "operatingSystem": "All",
+      "inLanguage": "ja",
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY" }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://secure-password-generator-ten.vercel.app/" },
+        { "@type": "ListItem", "position": 2, "name": "安全なPINジェネレーター", "item": "https://secure-password-generator-ten.vercel.app/tools/secure-pin-generator.html" }
+      ]
     }
     </script>
     <script type="application/ld+json">
@@ -127,10 +160,26 @@
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "PINはどのように生成されますか？",
+          "name": "PINの種類に制限はありますか？",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "ブラウザの暗号学的に安全な乱数生成器（Web Crypto API）を使用して生成されます。"
+            "text": "いいえ、当ツールは3桁から12桁まで自由に設定できます。セキュリティと利便性のバランスを考え、多くの用途では6〜8桁をお勧めしています。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "推測されやすいPINは除外されていますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "このジェネレーターは「完全なランダム」を重視しています。そのため、非常に低い確率ですが「1111」や「1234」が生成されることがあります。もし不快・不安に感じるPINが生成された場合は、遠慮なく再生成ボタンをクリックしてください。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "このツールでの作業履歴は残りますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "残りません。あなたがどのPINをいつ生成したかは、当サイトの運営者も含め、誰も知ることはできません。ページを閉じればすべてのデータは完全に消去されます。"
           }
         }
       ]
