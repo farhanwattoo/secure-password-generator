@@ -4,54 +4,75 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ランダムユーザー名ジェネレーター – パスワード生成.com</title>
+    <title>ランダムユーザー名ジェネレーター - SNS・ゲーム用の名前を無料作成 | パスワード生成.com</title>
     <meta name="description"
-        content="パスワード生成.comのユーザー名生成。即座にユニークでランダムなユーザー名を生成します。" />
-    <meta name="keywords" content="ユーザー名生成,ランダムユーザー名,オンラインツール,安全" />
+        content="SNSやゲームに使えるユニークなユーザー名を無料で即座に生成。個人情報を含まない安全な名前で、身バレ・特定リスクを軽減。すべての処理はブラウザ内で完結します。" />
+    <link rel="canonical" href="https://secure-password-generator-ten.vercel.app/tools/random-username-generator.html" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+    <meta name="theme-color" content="#4f46e5" />
+    <script>
+        (function () { try { var t = localStorage.getItem('theme'); if (t !== 'dark' && t !== 'light') { t = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; } document.documentElement.setAttribute('data-theme', t); } catch (e) { } })();
+    </script>
+    <!-- Open Graph -->
+    <meta property="og:site_name" content="パスワード生成.com" />
+    <meta property="og:title" content="ランダムユーザー名ジェネレーター - SNS・ゲーム用の名前を無料作成" />
+    <meta property="og:description" content="SNSやゲームに使えるユニークなユーザー名を即座に生成。処理はすべてブラウザ内で完結します。" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://secure-password-generator-ten.vercel.app/tools/random-username-generator.html" />
+    <meta property="og:image" content="https://secure-password-generator-ten.vercel.app/assets/og-image.png" />
+    <meta property="og:locale" content="ja_JP" />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="ランダムユーザー名ジェネレーター - SNS・ゲーム用の名前を無料作成" />
+    <meta name="twitter:description" content="SNSやゲームに使えるユニークなユーザー名を即座に生成。処理はすべてブラウザ内で完結します。" />
+    <meta name="twitter:image" content="https://secure-password-generator-ten.vercel.app/assets/og-image.png" />
     <link rel="stylesheet" href="../css/style.css" />
+    <script src="../js/site.js" defer></script>
+    <script src="../js/random-username-generator.js" defer></script>
 </head>
 
 <body>
-    <!-- ダーク/ライトモード切替 -->
-    <button id="theme-toggle" aria-label="ダーク/ライトモード切替" class="theme-toggle">🌙</button>
-
-    <nav class="top-nav" aria-label="メインナビゲーション">
+    <header class="top-nav">
         <a href="../index.html" class="site-brand">
-            <span>🔐</span> パスワード生成.com
+            <span aria-hidden="true">🔐</span><span class="brand-text">パスワード生成.com</span>
         </a>
-        <div class="nav-container">
+        <nav class="nav-container" id="site-menu" aria-label="メインナビゲーション">
             <ul>
                 <li><a href="../index.html" class="nav-link">ホーム</a></li>
                 <li><a href="password-strength-checker.html" class="nav-link">強度チェッカー</a></li>
-                <li><a href="random-username-generator.html" class="nav-link active">ユーザー名生成</a></li>
+                <li><a href="random-username-generator.html" class="nav-link active" aria-current="page">ユーザー名生成</a></li>
                 <li><a href="random-name-generator.html" class="nav-link">名前生成</a></li>
                 <li><a href="secure-pin-generator.html" class="nav-link">PIN生成</a></li>
             </ul>
+        </nav>
+        <div class="nav-actions">
+            <button id="theme-toggle" aria-label="ダークモードに切り替え" class="theme-toggle">🌙</button>
+            <button id="nav-toggle" class="nav-toggle" aria-expanded="false" aria-controls="site-menu"
+                aria-label="メニューを開閉">☰</button>
         </div>
-    </nav>
+    </header>
 
     <main>
         <section class="section">
             <h1>ランダムユーザー名ジェネレーター</h1>
             <p class="notice">SNSやゲーム用のユニークなユーザー名を生成します。すべての処理はローカルで行われます。</p>
             <div class="generator-container">
-                <div class="output-box" id="username-output" aria-live="polite">ユーザー名を生成してください...</div>
+                <div class="output-box placeholder" id="username-output" aria-live="polite">「ユーザー名を生成」ボタンを押してください</div>
                 <div class="controls">
                     <label for="username-length">長さを選択: <span id="username-length-val">10</span></label>
                     <input type="range" id="username-length" min="4" max="24" value="10" />
-                    
                     <div class="checkboxes">
                         <label><input type="checkbox" id="include-numbers" checked /> 数字を含める</label>
                         <label><input type="checkbox" id="include-symbols" /> 記号（_ / -）を含める</label>
                     </div>
-
                     <div class="action-buttons">
                         <button id="generate-username-btn" class="primary">ユーザー名を生成</button>
                         <button id="copy-username-btn" class="secondary" disabled>コピー</button>
                     </div>
                 </div>
             </div>
-            <p style="margin-top: 1rem;"><a href="../index.html">← パスワードジェネレーターに戻る</a></p>
+            <p class="back-link"><a href="../index.html">← パスワードジェネレーターに戻る</a></p>
         </section>
 
         <!-- 詳細教育コンテンツ -->
@@ -60,7 +81,7 @@
             <div class="detail-text">
                 <h3>なぜ「使い回し」のユーザー名が危険なのか？</h3>
                 <p>多くの人は、覚えやすさのためにすべてのサイトで同じユーザー名を使用します（例: "@tarosato_1990"）。しかし、これは「OSINT（オープンソース・インテリジェンス）」と呼ばれる手法で、あなたの行動履歴や個人情報を特定するための格好の材料となります。一つのサイトで調べたユーザー名を別のサイトで検索することで、あなたの住所や職場が特定されるリスクが生じます。</p>
-                
+
                 <h3>安全なユーザー名を作るための3つのルール</h3>
                 <ul>
                     <li><strong>個人情報を混ぜない:</strong> 本名の一部、誕生日、居住地域、出身校などは、攻撃工程の「最初の足がかり」になります。</li>
@@ -86,21 +107,22 @@
         </section>
     </main>
 
-    <footer class="bottom-nav" aria-label="フッターナビゲーション">
+    <footer class="bottom-nav">
         <div class="footer-brand">
-            <a href="../index.html" class="site-brand">🔐 パスワード生成.com</a>
+            <a href="../index.html" class="site-brand"><span aria-hidden="true">🔐</span><span
+                    class="brand-text">パスワード生成.com</span></a>
             <p>プライバシー重視の安全なツールコレクション</p>
         </div>
-        <nav class="tool-links">
+        <nav class="tool-links" aria-label="ツール一覧">
             <ul>
-                <li><a href="../index.html" class="nav-link">ホーム (Default Page)</a></li>
+                <li><a href="../index.html" class="nav-link">ホーム</a></li>
                 <li><a href="password-strength-checker.html" class="nav-link">強度チェッカー</a></li>
                 <li><a href="random-username-generator.html" class="nav-link active">ユーザー名生成</a></li>
                 <li><a href="random-name-generator.html" class="nav-link">名前生成</a></li>
                 <li><a href="secure-pin-generator.html" class="nav-link">PIN生成</a></li>
             </ul>
         </nav>
-        <nav class="legal-nav">
+        <nav class="legal-nav" aria-label="規約・ポリシー">
             <ul>
                 <li><a href="../legal/privacy-policy.html" class="nav-link">プライバシーポリシー</a></li>
                 <li><a href="../legal/terms-of-service.html" class="nav-link">利用規約</a></li>
@@ -110,17 +132,27 @@
         <p class="copyright">&copy; 2026 パスワード生成.com. All rights reserved.</p>
     </footer>
 
-    <script src="../js/random-username-generator.js"></script>
-
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "SoftwareApplication",
       "name": "ランダムユーザー名ジェネレーター",
+      "url": "https://secure-password-generator-ten.vercel.app/tools/random-username-generator.html",
       "description": "ユニークでランダムなユーザー名を即座に生成します。",
       "applicationCategory": "UtilityApplication",
       "operatingSystem": "All",
+      "inLanguage": "ja",
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY" }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://secure-password-generator-ten.vercel.app/" },
+        { "@type": "ListItem", "position": 2, "name": "ランダムユーザー名ジェネレーター", "item": "https://secure-password-generator-ten.vercel.app/tools/random-username-generator.html" }
+      ]
     }
     </script>
     <script type="application/ld+json">
@@ -130,10 +162,26 @@
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "ユーザー名は安全ですか？",
+          "name": "生成されたユーザー名が既に他の人に使われている場合はどうすればいいですか？",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "はい。ランダムな単語を組み合わせるため、個人を特定しにくい名前を生成できます。"
+            "text": "その時は「数字を含める」にチェックを入れて再生成するか、末尾に自分の好きな3〜4桁の数字を手動で加えてみてください。あるいは、形容詞をもう一つ付け加えるのも効果的です。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "英語のユーザー名しか生成できないのですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "はい。現在のSNSやゲームプラットフォームの多くは、英数字のみのユーザー名を前提としているため、互換性を考慮して英単語の組み合わせを採用しています。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "ゲームのキャラクター名（IGN）としても使えますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "もちろんです！MMORPGやFPSなどのゲームで見栄えが良く、かつユニークな名前を生成するように調整されています。"
           }
         }
       ]
